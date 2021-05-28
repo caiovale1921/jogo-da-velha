@@ -1,18 +1,19 @@
+from ast import For
+from colorama import Fore
 import Tabuleiro 
 import FimJogo 
 import Jogada
 import os
-
-cores = {'limpa': '\033[m',
-        'vermelho': '\033[1;31m' ,
-        'azul': '\033[1;34m'
-    }
 
 player1 = input("Informe o nome do Jogador 1: ")
 print("-=" *30)
 
 player2 = input("Informe o nome do Jogador 2: ")
 print("-=" *30)
+os.system('cls')
+
+player2 = (Fore.RED + f'{player2}' + Fore.RESET)
+player1 = (Fore.BLUE + f'{player1}' + Fore.RESET)
 
 cont = int(0)
 jogo = FimJogo.ValidarJogo(cont, player1, player2)

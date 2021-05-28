@@ -1,12 +1,12 @@
 #Módulo resposável por validar o fim de jogo
 
 def ValidarJogo(cont, player1, player2):
-    if(cont >= 3):
+    if(cont >= 9):
         print('-=' *30)
-        if(cont % 2 == 0):
-            print(f'Quem ganhou foi: {player1}')
+        if((cont - 1) % 2 == 0):
+            print('Quem ganhou foi: ' + player1)
         else:
-            print(f'Quem ganhou foi: {player2}')
+            print('Quem ganhou foi: '+ player2)
         return('True')
     else:
         return('False')
