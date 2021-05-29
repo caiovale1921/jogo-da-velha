@@ -6,6 +6,9 @@ import Tabuleiro
 import Pecas
 import os
 
+l = int(0)
+c = int(0)
+
 #realiza as jogadas de cada jogador
 def jogada(cont, player1, player2):
     teste = FALSE
@@ -24,11 +27,11 @@ def jogada(cont, player1, player2):
     l = int(l)
     c = int(c)
     if(cont % 2 == 0):
-        Tabuleiro.tab[l][c] = Pecas.p1peca1
+        Tabuleiro.tab[l][c] = Pecas.PecasAzuis[0]
     else:
-        Tabuleiro.tab[l][c] = Pecas.p2peca1
-        
-    #Tabuleiro.tab[l][c] = 1
+        Tabuleiro.tab[l][c] = Pecas.PecasVermelhas[0]
+    
+    
 
 #validaa a jogada realiza anteriormente
 def ValidarJogada(l, c):
@@ -37,7 +40,7 @@ def ValidarJogada(l, c):
         teste2 = int(c)
     except ValueError:
         os.system('cls')
-        print("JOGADA INVÁLIDA, VOCÊ NÃO PODE COMER ESTA PEÇA!")
+        print("Posição invalida, informe um número inteiro para as posições!")
         Tabuleiro.tabuleiro()
         return FALSE
 
