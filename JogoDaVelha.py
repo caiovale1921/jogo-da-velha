@@ -1,9 +1,9 @@
 from ast import For
+from pickle import FALSE
 from colorama import Fore
 import Tabuleiro 
 import FimJogo 
 import Jogada
-import Pecas
 import os
 
 player1 = input("Informe o nome do Jogador 1: ")
@@ -20,17 +20,12 @@ cont = int(0)
 jogo = FimJogo.ValidarJogo(cont, player1, player2)
 Tabuleiro.tabuleiro()
 
-while( jogo == 'False'):
+while( jogo == FALSE):
     Jogada.jogada(cont, player1, player2)
     os.system('cls')
     cont = cont + 1
     jogo = FimJogo.ValidarJogo(cont, player1, player2)
     Tabuleiro.tabuleiro()
-    if(cont > 8):
-        jogo = 'True'
-        print("-=" *30)
-        print("Deu velha")
-        print("-=" *30)
     
 teste = input()
     
