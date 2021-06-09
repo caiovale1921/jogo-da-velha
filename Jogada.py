@@ -1,5 +1,5 @@
-#Módulo responsável por realizar e validar as jogadas do jogo
-from pickle import FALSE, PUT, TRUE
+#Classe responsavel por realizar todas as funcoes referentes as jogadas do usuario
+from pickle import FALSE, TRUE
 import re
 import Tabuleiro
 import Pecas
@@ -17,28 +17,31 @@ Peca2Red = int(2)
 Peca3Red = int(2) 
 trava = FALSE
 
-#realiza as jogadas de cada jogador
+#responsavel por solicitar a jogada aos usuarios e chamar a funcao ValidarJogada
 def jogada(cont, player1, player2):
     global PecaSelect
     global trava
     teste = FALSE
     cont = int(cont)
     while(teste == FALSE):
+        print()
         if(cont % 2 == 0):
-            print('Quem joga é: ' + player1)
-            print(f'A quantidade de peças disponiveis é: Peça 1 {Peca1Blue}, Peça 2 {Peca2Blue} e Peça 3 {Peca3Blue}')
+            print('  Quem joga é: ' + player1)
+            print('  A quantidade de peças disponiveis é: ' + Fore.BLUE + 'Peça1 ' + Fore.RESET + f'{Peca1Blue}, ' + Fore.BLUE + 'Peça2 ' + Fore.RESET + f'{Peca2Blue} e ' + Fore.BLUE + 'Peça3 ' + Fore.RESET + f'{Peca3Blue}')
         else:
-            print('Quem joga é: ' + player2)
-            print(f'A quantidade de peças disponiveis é: Peça 1 {Peca1Red}, Peça 2 {Peca2Red} e Peça 3 {Peca3Red}')
-        
-        l = input('Informe a linha que deseja jogar ou da peça que deseja mover: ')
+            print('  Quem joga é: ' + player2)
+            print('  A quantidade de peças disponiveis é: ' + Fore.RED + 'Peça1 ' + Fore.RESET + f'{Peca1Red}, ' + Fore.RED + 'Peça2 ' + Fore.RESET + f'{Peca2Red} e ' + Fore.RED + 'Peça3 ' + Fore.RESET + f'{Peca3Red}')
+
+        print()
+        l = input('  Informe a linha que deseja jogar ou da peça que deseja mover: ')
     
-        c = input('Informe a coluna que deseja jogar ou da peça que deseja mover: ')
+        c = input('  Informe a coluna que deseja jogar ou da peça que deseja mover: ')
 
         teste = ValidarJogada(l, c, cont)
 
     l = int(l)
     c = int(c)
+    #a trava funciona para impedir uma nova jogada, em xaso do usuario querer apenas movimentar uma peca no tabuleiro e nao inserir uma nova
     if(trava == FALSE):
         trava = FALSE
         if(cont % 2 ==0):
@@ -59,7 +62,7 @@ def jogada(cont, player1, player2):
     
     
 
-#validaa a jogada realiza anteriormente
+#validaa se a jogada realizada e valida, para isso utliza as funcoes MovintarPeca e ValidarPeca
 def ValidarJogada(l, c, cont):
     global trava
     try:
@@ -67,7 +70,8 @@ def ValidarJogada(l, c, cont):
         c = int(c)
     except ValueError:
         os.system('cls')
-        print(Fore.YELLOW +"Posição invalida, informe um número inteiro para as posições!" + Fore.RESET)
+        print()
+        print(Fore.YELLOW +"  Posição invalida, informe um número inteiro para as posições!" + Fore.RESET)
         Tabuleiro.tabuleiro()
         return FALSE
     cont = int(cont) 
@@ -79,10 +83,12 @@ def ValidarJogada(l, c, cont):
             return MovimentarPeca(l, c, cont)
     else:
         os.system('cls')
-        print(Fore.YELLOW + "JOGADA INVÁLIDA, FAVOR REALIZAR UM MOVIMENTO VALIDO!" + Fore.RESET)
+        print()
+        print(Fore.YELLOW + "  JOGADA INVÁLIDA, FAVOR REALIZAR UM MOVIMENTO VALIDO!" + Fore.RESET)
         Tabuleiro.tabuleiro()
         return FALSE   
 
+#responsavel por vaidar qaulquer movimento de peca, seja esta peca nova ou não
 def MovimentarPeca(l, c, cont):
     i = int(cont)
     global trava
@@ -95,12 +101,13 @@ def MovimentarPeca(l, c, cont):
     global Peca3Red
     if(i % 2 == 0):
         if((Tabuleiro.tab[l][c] == Pecas.PecaRed0) or (Tabuleiro.tab[l][c] == Pecas.PecaRed1) or (Tabuleiro.tab[l][c] == Pecas.PecaRed2)):
-            PecaSelect = input('Selecione qual o tamanho da peça da jogada (1 - 2 - 3): ')
+            PecaSelect = input('  Selecione qual o tamanho da peça da jogada (1 - 2 - 3): ')
             try:
                 PecaSelect = int(PecaSelect)
             except ValueError:
                 os.system('cls')
-                print(Fore.YELLOW +"Peça invalida, favor refazer a jogada!" + Fore.RESET)
+                print()
+                print(Fore.YELLOW +"  Peça invalida, favor refazer a jogada!" + Fore.RESET)
                 Tabuleiro.tabuleiro()
                 return FALSE
 
@@ -131,8 +138,8 @@ def MovimentarPeca(l, c, cont):
                         return TRUE
                     else:
                         os.system('cls')
-                        print(Fore.YELLOW + "Você não pode comer essa peça!" + Fore.RESET)
-                        print('Entrei aqui')
+                        print()
+                        print(Fore.YELLOW + "  Você não pode comer essa peça!" + Fore.RESET)
                         Tabuleiro.tabuleiro()
                         if(PecaSelect == 1):
                             Peca1Blue = Peca1Blue + 1
@@ -143,7 +150,8 @@ def MovimentarPeca(l, c, cont):
                         return FALSE
                 else:
                     os.system('cls')
-                    print(Fore.YELLOW +"Peça Selecionada já acabou, favor refazer a jogada!" + Fore.RESET)
+                    print()
+                    print(Fore.YELLOW +"  Peça Selecionada já acabou, favor refazer a jogada!" + Fore.RESET)
                     Tabuleiro.tabuleiro()
                     if(PecaSelect == 1):
                         Peca1Blue = Peca1Blue + 1
@@ -154,17 +162,19 @@ def MovimentarPeca(l, c, cont):
                     return FALSE
             else:
                 os.system('cls')
-                print(Fore.YELLOW +"Peça invalida, favor refazer a jogada!" + Fore.RESET)
+                print()
+                print(Fore.YELLOW +"  Peça invalida, favor refazer a jogada!" + Fore.RESET)
                 Tabuleiro.tabuleiro()
                 return FALSE 
     else:
         if((Tabuleiro.tab[l][c] == Pecas.PecaBlue0) or (Tabuleiro.tab[l][c] == Pecas.PecaBlue1) or (Tabuleiro.tab[l][c] == Pecas.PecaBlue2)):
-            PecaSelect = input('Selecione qual o tamanho da peça da jogada (1 - 2 - 3): ')
+            PecaSelect = input('  Selecione qual o tamanho da peça da jogada (1 - 2 - 3): ')
             try:
                 PecaSelect = int(PecaSelect)
             except ValueError:
                 os.system('cls')
-                print(Fore.YELLOW +"Peça invalida, favor refazer a jogada!" + Fore.RESET)
+                print()
+                print(Fore.YELLOW +"  Peça invalida, favor refazer a jogada!" + Fore.RESET)
                 Tabuleiro.tabuleiro()
                 return FALSE
             if(PecaSelect > 0 and PecaSelect < 4):    
@@ -194,8 +204,8 @@ def MovimentarPeca(l, c, cont):
                         return TRUE
                     else:
                         os.system('cls')
-                        print(Fore.YELLOW +"Você não pode comer essa peça!" + Fore.RESET)
-                        print('Entrei aqui')
+                        print()
+                        print(Fore.YELLOW +"  Você não pode comer essa peça!" + Fore.RESET)
                         Tabuleiro.tabuleiro()
                         if(PecaSelect == 1):
                             Peca1Red = Peca1Red + 1
@@ -206,7 +216,8 @@ def MovimentarPeca(l, c, cont):
                         return FALSE
                 else:
                     os.system('cls')
-                    print(Fore.YELLOW +"Peça Selecionada já acabou, favor refazer a jogada!" + Fore.RESET)
+                    print()
+                    print(Fore.YELLOW +"  Peça Selecionada já acabou, favor refazer a jogada!" + Fore.RESET)
                     Tabuleiro.tabuleiro()
                     if(PecaSelect == 1):
                         Peca1Red = Peca1Red + 1
@@ -215,14 +226,15 @@ def MovimentarPeca(l, c, cont):
                     else:
                         Peca3Red = Peca3Red + 1
                     return FALSE
-    l1 = input('Informe a linha da nova posição da peça:')
-    c1 = input('Informe a coluna da nova posição da peça: ')
+    l1 = input('  Informe a linha da nova posição da peça:')
+    c1 = input('  Informe a coluna da nova posição da peça: ')
     try:
         l1 = int(l1)
         c1 = int(c1)
     except ValueError:
         os.system('cls')
-        print(Fore.YELLOW +"Posição invalida, informe um número inteiro para as posições!" + Fore.RESET)
+        print()
+        print(Fore.YELLOW +"  Posição invalida, informe um número inteiro para as posições!" + Fore.RESET)
         Tabuleiro.tabuleiro()
         return FALSE
     if((l1 >= 0 and l1 <= 2) and (c1 >= 0 and c1 <= 2)):
@@ -280,16 +292,18 @@ def MovimentarPeca(l, c, cont):
                 return TRUE
             else:
                 os.system('cls')
-                print(Fore.YELLOW +"JOGADA INVÁLIDA, VOCÊ NÃO PODE COMER ESTA PEÇA!" + Fore.RESET)
+                print()
+                print(Fore.YELLOW +"  JOGADA INVÁLIDA, VOCÊ NÃO PODE COMER ESTA PEÇA!" + Fore.RESET)
                 Tabuleiro.tabuleiro()
                 return FALSE
     else:
         os.system('cls')
-        print(Fore.YELLOW + "JOGADA INVÁLIDA, FAVOR REALIZAR UM MOVIMENTO VALIDO!" + Fore.RESET)
+        print()
+        print(Fore.YELLOW + "  JOGADA INVÁLIDA, FAVOR REALIZAR UM MOVIMENTO VALIDO!" + Fore.RESET)
         Tabuleiro.tabuleiro()
         return FALSE   
         
-
+#responsavel por validar as pecas, ou seja, verifica se o valor inserido corresponde a uma peca ainda disponivel
 def ValidarPeca(cont):
     global PecaSelect
     global Peca1Blue
@@ -298,12 +312,13 @@ def ValidarPeca(cont):
     global Peca1Red
     global Peca2Red
     global Peca3Red
-    PecaSelect = input('Selecione qual o tamanho da peça da jogada (1 - 2 - 3): ')
+    PecaSelect = input('  Selecione qual o tamanho da peça da jogada (1 - 2 - 3): ')
     try:
         PecaSelect = int(PecaSelect)
     except ValueError:
         os.system('cls')
-        print(Fore.YELLOW +"Peça invalida, favor refazer a jogada!" + Fore.RESET)
+        print()
+        print(Fore.YELLOW +"  Peça invalida, favor refazer a jogada!" + Fore.RESET)
         Tabuleiro.tabuleiro()
         return FALSE
     if(PecaSelect > 0 and PecaSelect < 4):    
@@ -313,7 +328,8 @@ def ValidarPeca(cont):
                    return TRUE
                 else:
                     os.system('cls')
-                    print(Fore.YELLOW +"Peça Selecionada já acabou, favor refazer a jogada!" + Fore.RESET)
+                    print()
+                    print(Fore.YELLOW +"  Peça Selecionada já acabou, favor refazer a jogada!" + Fore.RESET)
                     Tabuleiro.tabuleiro()
                     if(PecaSelect == 1):
                         Peca1Blue = Peca1Blue + 1
@@ -328,7 +344,8 @@ def ValidarPeca(cont):
                    return TRUE
                 else:
                     os.system('cls')
-                    print(Fore.YELLOW +"Peça Selecionada já acabou, favor refazer a jogada!" + Fore.RESET)
+                    print()
+                    print(Fore.YELLOW +"  Peça Selecionada já acabou, favor refazer a jogada!" + Fore.RESET)
                     Tabuleiro.tabuleiro()
                     if(PecaSelect == 1):
                         Peca1Red = Peca1Red + 1
@@ -339,10 +356,12 @@ def ValidarPeca(cont):
                     return FALSE
     else:
         os.system('cls')
-        print(Fore.YELLOW +"Peça invalida, favor refazer a jogada!" + Fore.RESET)
+        print()
+        print(Fore.YELLOW +"  Peça invalida, favor refazer a jogada!" + Fore.RESET)
         Tabuleiro.tabuleiro()
         return FALSE
 
+#responsavel por armarzenar a quantidade pecas azuis disponiveis
 def QuantPecasBlue():
     global PecaSelect
     global Peca1Blue
@@ -369,7 +388,7 @@ def QuantPecasBlue():
         else:
             
             return FALSE
-
+#responsavel por armarzenar a quantidade pecas veremlhas disponiveis
 def QuantPecasRed():
     global PecaSelect
     global Peca1Red

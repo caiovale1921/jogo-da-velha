@@ -1,17 +1,19 @@
 
-#Módulo resposável por validar o fim de jogo
+#Classe responsavel por verificar se o jogo ja chegou ao fim
 
 from pickle import FALSE, TRUE
+from colorama import Fore
 import Tabuleiro
 import Pecas
 
+#funcao responsavel por chamar as funcoes de validacao de fim de jogo (ValidarPecaAzuis e ValidarPecasVermelhas)
 def ValidarJogo(cont, player1, player2):
     
     if(cont > 4):
         testeAzuis = ValidarPecaAzuis()
         testeVermelhas = ValidarPecaVermelhas()
         if(testeAzuis == TRUE) or (testeVermelhas == TRUE):
-            print('-=' *30)
+            print("-=" *34 )
             if((cont - 1) % 2 == 0):
                 print('Quem ganhou foi: ' + player1)
             else:
@@ -23,7 +25,7 @@ def ValidarJogo(cont, player1, player2):
         return FALSE
 
 
-#Modulo para testar a peca que esta na posicao
+#Funcao responsavel por validar se o usuario das pecas Vermelhas cumpriu as necessidades para ganhar o jogo
 
 def ValidarPecaVermelhas():
     #verificacao de linhas
@@ -113,6 +115,8 @@ def ValidarPecaVermelhas():
         return TRUE
     else:
         return FALSE
+
+#Funcao responsavel por validar se o usuario das pecas azuis cumpriu as necessidades para ganhar o jogo
 
 def ValidarPecaAzuis():
     #verificacao de linhas
