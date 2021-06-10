@@ -36,7 +36,7 @@ VitoriaP1 = int(0)
 VitoriaP2 = int(0)
 
 cont = int(0)
-jogo = FimJogo.ValidarJogo(cont, player1, player2)
+jogo = FALSE
 Tabuleiro.tabuleiro()
 
 while( jogo == FALSE):
@@ -51,8 +51,8 @@ while( jogo == FALSE):
         print()
         reset = input("  Deseja jogar novamente (S/N): ")
         if((reset == "S") or (reset == "s")):
-            if(cont % 2 == 0): VitoriaP2 = VitoriaP2 + 1
-            else: VitoriaP1 = VitoriaP1 + 1
+            if(cont % 2 == 0): VitoriaP1 = VitoriaP1 + 1
+            else: VitoriaP2 = VitoriaP2 + 1
             jogo = FALSE
             cont = int(0)
             Tabuleiro.tab = [["     " , "     "  , "     " ], ["     " , "     "  , "     " ],["     " , "     "  , "     " ]]
@@ -70,8 +70,8 @@ while( jogo == FALSE):
             print(f'  Vitorias {player2}: {VitoriaP2}')
             Tabuleiro.tabuleiro()
         else:
-            if(cont % 2 == 0): VitoriaP2 = VitoriaP2 + 1
-            else: VitoriaP1 = VitoriaP1 + 1
+            if(cont % 2 == 0): VitoriaP1 = VitoriaP1 + 1
+            else: VitoriaP2 = VitoriaP2 + 1
             print()
             print()
             print(f'  Vitorias: {player1} -> {VitoriaP1}')
