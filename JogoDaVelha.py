@@ -8,19 +8,31 @@ import os
 
 os.system('cls')
 print()
+
+print( "        =" + "-=" *34)
+print( "         " + Fore.YELLOW + "                       JOGO DA VELHA 2.0" + Fore.RESET )
+print( "        =" + "-=" *34)
+
 print()
 
+print(Fore.YELLOW + """       Assim como no jogo da velha o seu objetivo é ser o primeiro a alinhar três 
+    peças para vencer, seja na diagonal ou na octogonal. A diferença é que cada 
+    jogador recebe seis peças, sendo: duas peças de tamanho 1 (Peça1), duas 
+    peças de tamanho 2 (Peça2) e duas peças de tamanho 3 (Peça3). Em seu 
+    turno o jogador pode posicionar uma peça em um local vazio ou em um local 
+    com uma peça menor que a selecionada para jogar, sendo a peça do 
+    adversário ou não, sobrepondo essa peça. Também pode deslocar uma peça 
+    sua que já esteja posicionada no tabuleiro, para uma posição vazia ou para a 
+    posição de uma peça eu possa sobrepor. Lembrando, as peças sobrepostas 
+    ainda continuam no jogo, ou seja, caso a peça que sobrepôs seja movida, a 
+    peça sobreposta assume esta posição.""" + Fore.RESET)
+
+print()
 print("-=" *34)
-print( "                       JOGO DA VELHA 2.0" )
-print("-=" *34)
-
 print()
-print()
-
 #solicita o nome de um jogador
 player1 = input("  Informe o nome do Jogador 1: ")
 print("-=" *34)
-print()
 print()
 
 #solicita o nome de um jogador
@@ -51,8 +63,8 @@ while( jogo == FALSE):
         print()
         reset = input("  Deseja jogar novamente (S/N): ")
         if((reset == "S") or (reset == "s")):
-            if(cont % 2 == 0): VitoriaP1 = VitoriaP1 + 1
-            else: VitoriaP2 = VitoriaP2 + 1
+            if(cont % 2 == 0): VitoriaP2 = VitoriaP2 + 1
+            else: VitoriaP1 = VitoriaP1 + 1
             jogo = FALSE
             cont = int(0)
             Tabuleiro.tab = [["     " , "     "  , "     " ], ["     " , "     "  , "     " ],["     " , "     "  , "     " ]]
@@ -70,8 +82,8 @@ while( jogo == FALSE):
             print(f'  Vitorias {player2}: {VitoriaP2}')
             Tabuleiro.tabuleiro()
         else:
-            if(cont % 2 == 0): VitoriaP1 = VitoriaP1 + 1
-            else: VitoriaP2 = VitoriaP2 + 1
+            if(cont % 2 == 0): VitoriaP2 = VitoriaP2 + 1
+            else: VitoriaP1 = VitoriaP1 + 1
             print()
             print()
             print(f'  Vitorias: {player1} -> {VitoriaP1}')

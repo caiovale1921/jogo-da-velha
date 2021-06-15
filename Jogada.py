@@ -41,6 +41,7 @@ def jogada(cont, player1, player2):
 
     l = int(l)
     c = int(c)
+
     #a trava funciona para impedir uma nova jogada, em xaso do usuario querer apenas movimentar uma peca no tabuleiro e nao inserir uma nova
     if(trava == FALSE):
         trava = FALSE
@@ -141,24 +142,28 @@ def MovimentarPeca(l, c, cont):
                         print()
                         print(Fore.YELLOW + "  Você não pode comer essa peça!" + Fore.RESET)
                         Tabuleiro.tabuleiro()
+                        
                         if(PecaSelect == 1):
-                            Peca1Blue = Peca1Blue + 1
+                            if(Peca1Blue > 0): Peca1Blue = Peca1Blue + 1
                         elif(PecaSelect == 2):
-                            Peca2Blue = Peca2Blue + 1
+                            if(Peca2Blue > 0): Peca2Blue = Peca2Blue + 1
                         else:
-                            Peca3Blue = Peca3Blue + 1
+                            if(Peca3Blue > 0): Peca3Blue = Peca3Blue + 1
+                        
                         return FALSE
                 else:
                     os.system('cls')
                     print()
                     print(Fore.YELLOW +"  Peça Selecionada já acabou, favor refazer a jogada!" + Fore.RESET)
                     Tabuleiro.tabuleiro()
+                    
                     if(PecaSelect == 1):
-                        Peca1Blue = Peca1Blue + 1
+                        if(Peca1Blue > 0): Peca1Blue = Peca1Blue + 1
                     elif(PecaSelect == 2):
-                        Peca2Blue = Peca2Blue + 1
+                        if(Peca2Blue > 0): Peca2Blue = Peca2Blue + 1
                     else:
-                        Peca3Blue = Peca3Blue + 1
+                        if(Peca3Blue > 0): Peca3Blue = Peca3Blue + 1
+                    
                     return FALSE
             else:
                 os.system('cls')
@@ -207,24 +212,28 @@ def MovimentarPeca(l, c, cont):
                         print()
                         print(Fore.YELLOW +"  Você não pode comer essa peça!" + Fore.RESET)
                         Tabuleiro.tabuleiro()
+                        
                         if(PecaSelect == 1):
-                            Peca1Red = Peca1Red + 1
+                            if(Peca1Red > 0): Peca1Red = Peca1Red + 1
                         elif(PecaSelect == 2):
-                            Peca2Red = Peca2Red + 1
+                            if(Peca2Red > 0): Peca2Red = Peca2Red + 1
                         else:
-                            Peca3Red = Peca3Red + 1
+                            if(Peca3Red > 0): Peca3Red = Peca3Red + 1
+                        
                         return FALSE
                 else:
                     os.system('cls')
                     print()
                     print(Fore.YELLOW +"  Peça Selecionada já acabou, favor refazer a jogada!" + Fore.RESET)
                     Tabuleiro.tabuleiro()
+                    
                     if(PecaSelect == 1):
-                        Peca1Red = Peca1Red + 1
+                        if(Peca1Red > 0): Peca1Red = Peca1Red + 1
                     elif(PecaSelect == 2):
-                        Peca2Red = Peca2Red + 1
+                        if(Peca2Red > 0): Peca2Red = Peca2Red + 1
                     else:
-                        Peca3Red = Peca3Red + 1
+                        if(Peca3Red > 0): Peca3Red = Peca3Red + 1
+                    
                     return FALSE
     l1 = input('  Informe a linha da nova posição da peça:')
     c1 = input('  Informe a coluna da nova posição da peça: ')
@@ -331,12 +340,14 @@ def ValidarPeca(cont):
                     print()
                     print(Fore.YELLOW +"  Peça Selecionada já acabou, favor refazer a jogada!" + Fore.RESET)
                     Tabuleiro.tabuleiro()
+                    
                     if(PecaSelect == 1):
-                        Peca1Blue = Peca1Blue + 1
+                        if(Peca1Blue > 0): Peca1Blue = Peca1Blue + 1
                     elif(PecaSelect == 2):
-                        Peca2Blue = Peca2Blue + 1
+                        if(Peca2Blue > 0): Peca2Blue = Peca2Blue + 1
                     else:
-                        Peca3Blue = Peca3Blue + 1
+                        if(Peca3Blue > 0): Peca3Blue = Peca3Blue + 1
+                    
                     return FALSE
             else:
                 teste = QuantPecasRed()
@@ -347,12 +358,14 @@ def ValidarPeca(cont):
                     print()
                     print(Fore.YELLOW +"  Peça Selecionada já acabou, favor refazer a jogada!" + Fore.RESET)
                     Tabuleiro.tabuleiro()
+                    
                     if(PecaSelect == 1):
-                        Peca1Red = Peca1Red + 1
+                        if(Peca1Red > 0): Peca1Red = Peca1Red + 1
                     elif(PecaSelect == 2):
-                        Peca2Red = Peca2Red + 1
+                        if(Peca2Red > 0): Peca2Red = Peca2Red + 1
                     else:
-                        Peca3Red = Peca3Red + 1
+                        if(Peca3Red > 0): Peca3Red = Peca3Red + 1
+                    
                     return FALSE
     else:
         os.system('cls')

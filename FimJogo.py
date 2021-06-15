@@ -2,7 +2,6 @@
 #Classe responsavel por verificar se o jogo ja chegou ao fim
 
 from pickle import FALSE, TRUE
-from colorama import Fore
 import Tabuleiro
 import Pecas
 
@@ -12,12 +11,13 @@ def ValidarJogo(cont, player1, player2):
     if(cont > 4):
         testeAzuis = ValidarPecaAzuis()
         testeVermelhas = ValidarPecaVermelhas()
-        if(testeAzuis == TRUE) or (testeVermelhas == TRUE):
+        if(testeAzuis == TRUE):
             print("-=" *34 )
-            if((cont - 1) % 2 == 0):
-                print('Quem ganhou foi: ' + player1)
-            else:
-                print('Quem ganhou foi: '+ player2)
+            print("Quem ganhou foi: " + player1)
+            return TRUE
+        elif(testeVermelhas == TRUE):
+            print("-=" *34 )
+            print("Quem ganhou foi: " + player2)
             return TRUE
         else:
             return FALSE
