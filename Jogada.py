@@ -138,18 +138,19 @@ def MovimentarPeca(l, c, cont):
                             Tabuleiro.tab1[l][c] = aux
                         return TRUE
                     else:
+                        
                         os.system('cls')
                         print()
-                        print(Fore.YELLOW + "  Você não pode comer essa peça!" + Fore.RESET)
+                        print(Fore.YELLOW + "JOGADA INVÁLIDA, VOCÊ NÃO PODE COMER ESTA PEÇA!" + Fore.RESET)
                         Tabuleiro.tabuleiro()
                         
                         if(PecaSelect == 1):
-                            if(Peca1Blue > 0): Peca1Blue = Peca1Blue + 1
+                            Peca1Blue = Peca1Blue + 1
                         elif(PecaSelect == 2):
-                            if(Peca2Blue > 0): Peca2Blue = Peca2Blue + 1
+                            Peca2Blue = Peca2Blue + 1
                         else:
-                            if(Peca3Blue > 0): Peca3Blue = Peca3Blue + 1
-                        
+                            Peca3Blue = Peca3Blue + 1
+
                         return FALSE
                 else:
                     os.system('cls')
@@ -210,15 +211,15 @@ def MovimentarPeca(l, c, cont):
                     else:
                         os.system('cls')
                         print()
-                        print(Fore.YELLOW +"  Você não pode comer essa peça!" + Fore.RESET)
+                        print(Fore.YELLOW +"  JOGADA INVÁLIDA, VOCÊ NÃO PODE COMER ESTA PEÇA!" + Fore.RESET)
                         Tabuleiro.tabuleiro()
                         
                         if(PecaSelect == 1):
-                            if(Peca1Red > 0): Peca1Red = Peca1Red + 1
+                            Peca1Red = Peca1Red + 1
                         elif(PecaSelect == 2):
-                            if(Peca2Red > 0): Peca2Red = Peca2Red + 1
+                            Peca2Red = Peca2Red + 1
                         else:
-                            if(Peca3Red > 0): Peca3Red = Peca3Red + 1
+                            Peca3Red = Peca3Red + 1
                         
                         return FALSE
                 else:
@@ -302,7 +303,7 @@ def MovimentarPeca(l, c, cont):
             else:
                 os.system('cls')
                 print()
-                print(Fore.YELLOW +"  JOGADA INVÁLIDA, VOCÊ NÃO PODE COMER ESTA PEÇA!" + Fore.RESET)
+                print(Fore.YELLOW + "  JOGADA INVÁLIDA, VOCÊ NÃO PODE COMER ESTA PEÇA!" + Fore.RESET)
                 Tabuleiro.tabuleiro()
                 return FALSE
     else:
